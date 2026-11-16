@@ -1,0 +1,625 @@
+:root {
+    --fi-primary: #d97706;      /* amber-600, dipakai Filament utk accent */
+    --fi-primary-light: #fef3c7;
+    --fi-success: #16a34a;
+    --fi-gray-25: #fcfcfd;
+    --fi-gray-50: #f9fafb;
+    --fi-gray-100: #f3f4f6;
+    --fi-gray-200: #e5e7eb;
+    --fi-gray-300: #d1d5db;
+    --fi-gray-400: #9ca3af;
+    --fi-gray-500: #6b7280;
+    --fi-gray-600: #4b5563;
+    --fi-gray-700: #374151;
+    --fi-gray-900: #111827;
+    --sidebar-width: 260px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--fi-gray-50);
+    color: var(--fi-gray-700);
+    font-size: 14px;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ===== Layout shell ===== */
+.fi-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+.fi-sidebar {
+    width: var(--sidebar-width);
+    background: #fff;
+    border-right: 1px solid var(--fi-gray-200);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.fi-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 22px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--fi-gray-900);
+    border-bottom: 1px solid var(--fi-gray-100);
+}
+
+.fi-sidebar-brand svg { flex-shrink: 0; }
+
+.fi-nav {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.fi-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    color: var(--fi-gray-600);
+    font-weight: 500;
+    transition: background .12s ease, color .12s ease;
+}
+
+.fi-nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+.fi-nav-item:hover {
+    background: var(--fi-gray-50);
+    color: var(--fi-gray-900);
+}
+
+.fi-nav-item.is-active {
+    background: var(--fi-gray-100);
+    color: var(--fi-gray-900);
+}
+
+/* ===== Main column ===== */
+.fi-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.fi-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: #fff;
+    border-bottom: 1px solid var(--fi-gray-200);
+}
+
+.fi-breadcrumbs {
+    font-size: 13px;
+    color: var(--fi-gray-400);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.fi-breadcrumbs a:hover { color: var(--fi-gray-600); }
+
+.fi-topbar-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--fi-gray-50);
+    border: 1px solid var(--fi-gray-200);
+    border-radius: 8px;
+    padding: 7px 12px;
+    color: var(--fi-gray-400);
+    width: 220px;
+}
+.fi-topbar-search input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+    width: 100%;
+    color: var(--fi-gray-700);
+}
+
+.fi-page {
+    padding: 24px 28px 40px;
+    flex: 1;
+}
+
+.fi-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.fi-page-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--fi-gray-900);
+    margin: 0;
+}
+
+.fi-page-actions { display: flex; gap: 10px; align-items: center; }
+
+/* ===== Buttons ===== */
+.fi-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fi-btn-primary {
+    background: var(--fi-primary);
+    color: #fff;
+}
+.fi-btn-primary:hover { background: #b45309; }
+
+.fi-btn-secondary {
+    background: #fff;
+    color: var(--fi-gray-700);
+    border: 1px solid var(--fi-gray-300);
+}
+.fi-btn-secondary:hover { background: var(--fi-gray-50); }
+
+/* ===== Card / table wrapper ===== */
+.fi-card {
+    background: #fff;
+    border: 1px solid var(--fi-gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.fi-table-wrap { overflow-x: auto; }
+
+table.fi-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fi-table thead th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--fi-gray-500);
+    text-transform: none;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--fi-gray-200);
+    background: var(--fi-gray-25);
+    white-space: nowrap;
+}
+
+.fi-table thead th.sortable {
+    display: table-cell;
+}
+.fi-table th .th-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.fi-table tbody td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--fi-gray-100);
+    color: var(--fi-gray-700);
+    white-space: nowrap;
+}
+
+.fi-table tbody tr:last-child td { border-bottom: none; }
+.fi-table tbody tr:hover { background: var(--fi-gray-25); }
+
+.fi-checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    border: 1px solid var(--fi-gray-300);
+    accent-color: var(--fi-primary);
+}
+
+.fi-badge {
+    display: inline-flex;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 500;
+    background: var(--fi-gray-100);
+    color: var(--fi-gray-600);
+}
+
+.fi-active-icon { color: var(--fi-success); display: inline-flex; }
+
+.fi-row-actions { display: flex; gap: 14px; align-items: center; }
+.fi-row-actions a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fi-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.fi-row-actions a:hover { color: #b45309; }
+.fi-row-actions .fi-link-muted { color: var(--fi-gray-500); }
+.fi-row-actions .fi-link-muted:hover { color: var(--fi-gray-700); }
+
+/* ===== Table footer / pagination ===== */
+.fi-table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-top: 1px solid var(--fi-gray-200);
+    font-size: 13px;
+    color: var(--fi-gray-500);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fi-per-page { display: flex; align-items: center; gap: 8px; }
+.fi-per-page select {
+    border: 1px solid var(--fi-gray-300);
+    border-radius: 8px;
+    padding: 5px 26px 5px 10px;
+    font-size: 13px;
+    color: var(--fi-gray-700);
+    background: #fff;
+}
+
+.fi-pagination { display: flex; align-items: center; gap: 4px; }
+.fi-pagination a, .fi-pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    font-size: 13px;
+    color: var(--fi-gray-600);
+}
+.fi-pagination a:hover { background: var(--fi-gray-100); }
+.fi-pagination .is-current { background: var(--fi-gray-100); color: var(--fi-gray-900); font-weight: 600; }
+
+/* ===== Form (create page) ===== */
+.fi-form-card { background: #fff; border: 1px solid var(--fi-gray-200); border-radius: 12px; padding: 24px; max-width: 720px; width: 100%; }
+.fi-field { margin-bottom: 18px; }
+.fi-field label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--fi-gray-700);
+    margin-bottom: 6px;
+}
+.fi-field .fi-hint { font-weight: 400; color: var(--fi-gray-400); }
+.fi-input, .fi-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid var(--fi-gray-300);
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: var(--fi-gray-900);
+    background: #fff;
+}
+.fi-input:focus, .fi-select:focus {
+    outline: none;
+    border-color: var(--fi-primary);
+    box-shadow: 0 0 0 3px var(--fi-primary-light);
+}
+.fi-toggle-row { display: flex; align-items: center; gap: 10px; }
+.fi-form-actions { display: flex; gap: 10px; margin-top: 22px; }
+
+.fi-alert {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #ecfdf3;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    font-size: 13.5px;
+    margin-bottom: 16px;
+}
+
+/* ===== Stats Grid & Cards ===== */
+.fi-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.fi-stat-card {
+    background: #fff;
+    border: 1px solid var(--fi-gray-200);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.fi-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.fi-stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--fi-gray-500);
+    margin-bottom: 6px;
+}
+
+.fi-stat-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--fi-gray-900);
+}
+
+.fi-stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--fi-gray-100);
+    color: var(--fi-gray-600);
+    flex-shrink: 0;
+}
+
+/* ===== Badges ===== */
+.fi-badge-success { background: #dcfce7; color: #15803d; border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 12px; }
+.fi-badge-warning { background: #fef3c7; color: #b45309; border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 12px; }
+.fi-badge-danger  { background: #fee2e2; color: #b91c1c; border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 12px; }
+.fi-badge-info    { background: #e0f2fe; color: #0369a1; border-radius: 6px; padding: 3px 8px; font-weight: 600; font-size: 12px; }
+
+/* ===== Action Buttons ===== */
+.fi-btn-danger {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.fi-btn-danger:hover { background: #dc2626; }
+
+.fi-btn-success {
+    background: #16a34a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.fi-btn-success:hover { background: #15803d; }
+
+/* ===== Thermal Receipt Print ===== */
+.thermal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+}
+.thermal-receipt {
+    width: 320px;
+    max-width: 100%;
+    background: #fff;
+    border: 1px dashed #9ca3af;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12.5px;
+    color: #000;
+    line-height: 1.4;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+.thermal-header { text-align: center; border-bottom: 1px dashed #000; padding-bottom: 10px; margin-bottom: 10px; }
+.thermal-footer { text-align: center; border-top: 1px dashed #000; padding-top: 10px; margin-top: 10px; font-size: 11px; }
+.thermal-row { display: flex; justify-content: space-between; margin: 4px 0; }
+.thermal-divider { border-top: 1px dashed #000; margin: 8px 0; }
+
+@media print {
+    body * { visibility: hidden; }
+    .thermal-receipt, .thermal-receipt *, .printable-area, .printable-area * { visibility: visible; }
+    .thermal-receipt, .printable-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+        box-shadow: none;
+        border: none;
+    }
+    .no-print { display: none !important; }
+}
+
+
+
+/* =====================================================================
+   RESPONSIVE
+   Breakpoint: 1024px (tablet landscape), 900px (sidebar jadi menu geser),
+   768px (tablet portrait / HP besar), 480px (HP)
+   ===================================================================== */
+
+img { max-width: 100%; height: auto; }
+
+/* Elemen yang hanya dipakai di layar kecil disembunyikan di desktop */
+.fi-menu-toggle { display: none; }
+.fi-overlay { display: none; }
+
+.fi-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.fi-topbar-user { flex-shrink: 0; }
+
+/* ---------- Tablet landscape ---------- */
+@media (max-width: 1024px) {
+    :root { --sidebar-width: 232px; }
+    .fi-topbar { padding: 12px 20px; }
+    .fi-page { padding: 20px 20px 36px; }
+}
+
+/* ---------- Sidebar jadi off-canvas ---------- */
+@media (max-width: 900px) {
+    .fi-shell { display: block; }
+
+    .fi-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1001;
+        width: min(var(--sidebar-width), 84vw);
+        overflow-y: auto;
+        transform: translateX(-100%);
+        visibility: hidden;
+        transition: transform .22s ease, visibility 0s linear .22s;
+    }
+    .fi-sidebar.is-open {
+        transform: translateX(0);
+        visibility: visible;
+        box-shadow: 0 0 32px rgba(17, 24, 39, .22);
+        transition: transform .22s ease, visibility 0s;
+    }
+
+    .fi-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(17, 24, 39, .45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+    }
+    .fi-overlay.is-visible { opacity: 1; pointer-events: auto; }
+
+    body.fi-nav-open { overflow: hidden; }
+
+    .fi-menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--fi-gray-200);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--fi-gray-700);
+        cursor: pointer;
+    }
+    .fi-menu-toggle:hover { background: var(--fi-gray-50); }
+
+    .fi-topbar {
+        position: sticky;
+        top: 0;
+        z-index: 900;
+        gap: 12px;
+    }
+
+    .fi-breadcrumbs {
+        min-width: 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+/* ---------- Tablet portrait & HP besar ---------- */
+@media (max-width: 768px) {
+    .fi-topbar { padding: 10px 14px; }
+    .fi-page { padding: 16px 14px 32px; }
+
+    .fi-page-title { font-size: 20px; }
+    .fi-page-header { margin-bottom: 14px; }
+    .fi-page-actions { width: 100%; flex-wrap: wrap; }
+    .fi-page-actions .fi-btn { flex: 1 1 auto; justify-content: center; }
+
+    /* Breadcrumb: tampilkan halaman aktif saja */
+    .fi-breadcrumbs > :not(:last-child) { display: none; }
+
+    /* Form */
+    .fi-form-card { padding: 18px; }
+    .fi-row { flex-direction: column; gap: 0 !important; }
+    .fi-row > * { flex: none !important; width: 100%; }
+    .fi-form-actions { flex-wrap: wrap; }
+
+    /* Form filter / pencarian */
+    .fi-filter-form { flex-direction: column; align-items: stretch !important; }
+    .fi-filter-form > * { width: 100% !important; min-width: 0 !important; flex: none !important; }
+    .fi-filter-form .fi-topbar-search { width: 100% !important; }
+    .fi-filter-form .fi-btn { flex: 1; justify-content: center; }
+    .fi-topbar-search { max-width: 100%; }
+
+    /* Tabel (scroll horizontal di dalam kartu) */
+    .fi-table-wrap { -webkit-overflow-scrolling: touch; }
+    .fi-table thead th { padding: 10px 12px; }
+    .fi-table tbody td { padding: 10px 12px; }
+
+    .fi-table-footer { flex-direction: column; align-items: center; text-align: center; }
+    .fi-pagination { flex-wrap: wrap; justify-content: center; }
+
+    /* Kartu statistik */
+    .fi-stat-card { padding: 14px 16px; }
+    .fi-stat-value { font-size: 20px; }
+    .fi-stat-icon { width: 40px; height: 40px; }
+
+    /* Padding kartu yang di-inline pada view */
+    .fi-card[style*="padding: 24px"],
+    .fi-card[style*="padding: 20px"] { padding: 16px !important; }
+
+    .thermal-wrapper { padding: 12px 0; }
+}
+
+/* ---------- HP ---------- */
+@media (max-width: 480px) {
+    .fi-topbar-name { display: none; }
+    .fi-topbar-user { gap: 10px !important; }
+
+    .fi-page-header { gap: 10px; }
+    .fi-btn { padding: 9px 14px; }
+    .fi-form-actions .fi-btn { flex: 1; justify-content: center; }
+
+    .fi-stat-grid { gap: 12px; margin-bottom: 18px; }
+    .thermal-receipt { padding: 16px 12px; font-size: 12px; }
+}
+
+/* Tampilan cetak tetap sama: jangan ikut aturan layar kecil */
+@media print {
+    .fi-menu-toggle, .fi-overlay { display: none !important; }
+}
